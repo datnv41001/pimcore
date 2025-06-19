@@ -8,7 +8,7 @@
  * - Name [input]
  * - Sku [input]
  * - Color [multiselect]
- * - Image [input]
+ * - Image [image]
  * - Category [manyToOneRelation]
  * - URL [link]
  * - Approved [checkbox]
@@ -30,7 +30,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1750306157,
+   'modificationDate' => 1750317635,
    'userOwner' => NULL,
    'userModification' => 2,
    'parentClass' => '',
@@ -182,7 +182,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'optionsProviderData' => '',
           )),
           3 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
              'name' => 'Image',
              'title' => 'Image',
              'tooltip' => '',
@@ -200,16 +200,9 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'defaultValue' => NULL,
-             'columnLength' => 190,
-             'regex' => '',
-             'regexFlags' => 
-            array (
-            ),
-             'unique' => false,
-             'showCharCount' => false,
+             'uploadPath' => '',
              'width' => '',
-             'defaultValueGenerator' => '',
+             'height' => '',
           )),
           4 => 
           \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(

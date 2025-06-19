@@ -55,6 +55,12 @@ services:
             - "getClient"
     Elastic\Elasticsearch\Client: '@Elasticsearch\Client'
 
+    App\Services\ProductIndexer: ~
+    App\Command\ProductIndexCommand:
+        tags: ["console.command"]
+    App\EventListener\ProductIndexListener:
+        tags: ["kernel.event_subscriber"]
+
     App\Services\CategoryIndexer: ~
     App\Command\CategoryIndexCommand:
         tags: ["console.command"]
