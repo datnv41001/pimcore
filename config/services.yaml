@@ -1,8 +1,8 @@
 parameters:
-    secret: ThisTokenIsNotSoSecretChangeItImmediately
+    secret: zJCyz/lPLbYFTpcjPfE6G5Xjp9kacNB8QtdzCLokDbc=
     
     # use echo \Defuse\Crypto\Key::createNewRandomKey()->saveToAsciiSafeString(); to generate secret for data encryption
-    app_encryption_secret: "ThisTokenIsNotSoSecretChangeItImmediately"
+    app_encryption_secret: "3it3AuXZxXVYewOdLnePPdzwtgHCcBVub1d2cdV5cJ0="
 
 
     #this is necessary for CLI commands to get the base url, eg. sitemap dump
@@ -37,6 +37,9 @@ parameters:
     #pimcore_executable_dot: /usr/bin/dot
 
 services:
+    App\EventListener\ProductSaveListener:
+        tags:
+            - { name: kernel.event_subscriber }
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services
