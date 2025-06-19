@@ -1,18 +1,17 @@
 imports:
-    - { resource: 'local/' }
+    - { resource: "local/" }
     - { resource: ecommerce/base-ecommerce.yaml }
     - { resource: cmf.yaml }
     - { resource: workflows.yaml }
 
 pimcore:
-
-# IMPORTANT Notice!
-# Following there are only some examples listed, for a full list of possible options, please run the following command:
-# ./bin/console debug:config pimcore
-# you can also filter them by path, eg.
-# ./bin/console debug:config pimcore assets
-# or even more specific:
-# ./bin/console debug:config pimcore assets.image
+    # IMPORTANT Notice!
+    # Following there are only some examples listed, for a full list of possible options, please run the following command:
+    # ./bin/console debug:config pimcore
+    # you can also filter them by path, eg.
+    # ./bin/console debug:config pimcore assets
+    # or even more specific:
+    # ./bin/console debug:config pimcore assets.image
 
     security:
         # the encoder factory as shipped by the CMF
@@ -20,41 +19,41 @@ pimcore:
             Pimcore\Model\DataObject\Customer: cmf.security.user_password_hasher_factory
 
     chromium:
-        uri: 'ws://chrome:3000/'
+        uri: "ws://chrome:3000/"
 
     gotenberg:
-        base_url: 'http://gotenberg:3000'
+        base_url: "http://gotenberg:3000"
 
     config_location:
         image_thumbnails:
             write_target:
-                type: 'settings-store'
+                type: "settings-store"
         video_thumbnails:
             write_target:
-                type: 'settings-store'
+                type: "settings-store"
         document_types:
             write_target:
-                type: 'settings-store'
+                type: "settings-store"
         predefined_properties:
             write_target:
-                type: 'settings-store'
+                type: "settings-store"
         predefined_asset_metadata:
             write_target:
-                type: 'settings-store'
+                type: "settings-store"
         perspectives:
             write_target:
-                type: 'settings-store'
+                type: "settings-store"
         custom_views:
             write_target:
-                type: 'settings-store'
+                type: "settings-store"
         object_custom_layouts:
             write_target:
-                type: 'settings-store'
+                type: "settings-store"
         system_settings:
             write_target:
-                type: 'settings-store'
+                type: "settings-store"
             read_target:
-                type: 'settings-store'
+                type: "settings-store"
 
 #### TRANSLATIONS
 #    translations:
@@ -75,7 +74,6 @@ pimcore:
 #            'Pimcore\Model\Document\Link': 'App\Model\Document\Link'
 #            'Pimcore\Model\Document\Listing': 'App\Model\Document\Listing'
 
-
 #### CUSTOM DOCUMENT EDITABLES
 #    documents:
 #        allow_trailing_slash: 'yes'
@@ -84,14 +82,12 @@ pimcore:
 #            map:
 #                markdown: \App\Model\Document\Tag\Markdown
 
-
 #### CUSTOM OBJECT DATA TYPES
 #    objects:
 #        class_definitions:
 #            data:
 #                map:
 #                  myDataType: \App\Model\DataObject\Data\MyDataType
-
 
 #### ASSET CUSTOM SETTINGS
 #    assets:
@@ -143,32 +139,31 @@ pimcore_admin:
     admin_csp_header:
         enabled: true
         exclude_paths:
-            - '@^/admin/external_opcache@'
+            - "@^/admin/external_opcache@"
 
     config_location:
         admin_system_settings:
             write_target:
-                type: 'settings-store'
+                type: "settings-store"
             read_target:
-                type: 'settings-store'
+                type: "settings-store"
 
 #### SYMFONY OVERRIDES
 framework:
+    #### USE CUSTOM CACHE POOL
+    #    cache:
+    #        pools:
+    #            pimcore.cache.pool:
+    #                public: true
+    #                default_lifetime: 31536000  # 1 year
+    #                adapter: cache.adapter.redis_tag_aware
+    #                provider: 'redis://localhost' # Redis DNS, see: https://symfony.com/doc/current/components/cache/adapters/redis_adapter.html#configure-the-connection
 
-#### USE CUSTOM CACHE POOL
-#    cache:
-#        pools:
-#            pimcore.cache.pool:
-#                public: true
-#                default_lifetime: 31536000  # 1 year
-#                adapter: cache.adapter.redis_tag_aware
-#                provider: 'redis://localhost' # Redis DNS, see: https://symfony.com/doc/current/components/cache/adapters/redis_adapter.html#configure-the-connection
+    #### USE SESSION HANDLER CONFIGURED IN php.ini
+    #    session:
+    #        handler_id: null
 
-#### USE SESSION HANDLER CONFIGURED IN php.ini
-#    session:
-#        handler_id: null
-
-#### SYMFONY MAILER TRANSPORTS
+    #### SYMFONY MAILER TRANSPORTS
     mailer:
         transports:
             main: smtp://user:pass@mailpit:1025
@@ -210,27 +205,26 @@ pimcore_web_to_print:
     config_location:
         web_to_print:
             write_target:
-                type: 'settings-store'
+                type: "settings-store"
 
 pimcore_static_routes:
     config_location:
         staticroutes:
             write_target:
-                type: 'settings-store'
+                type: "settings-store"
 
 pimcore_custom_reports:
     config_location:
         custom_reports:
             write_target:
-                type: 'settings-store'
+                type: "settings-store"
 
 pimcore_data_hub:
     config_location:
         data_hub:
             write_target:
-                type: 'settings-store'
+                type: "settings-store"
 
 pimcore_personalization:
     targeting:
         enabled: true
-                
