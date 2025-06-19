@@ -40,9 +40,17 @@ class CategoryIndexer
 
     public function deleteFromIndex(Danhmuc $category): void
     {
-        $this->client->delete([
-            'index' => 'categories',
-            'id' => $category->getId(),
-        ]);
+        try {
+            $this->client->delete([
+                'index' => 'categories',
+                'id' => $category->getId(),
+            ]);
+        } catch (\Elastic\Elasticsearch\Exception\ClientResponseException $e) {
+            // Bỏ qua nếu lỗi 404 (document not found hoặc index not found)
+            if ($e->getCode() === 404) {
+                return;
+            }
+            throw $e; // các lỗi khác vẫn throw để debug
+        }
     }
 }
