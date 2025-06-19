@@ -1,9 +1,8 @@
 parameters:
-    secret: zJCyz/lPLbYFTpcjPfE6G5Xjp9kacNB8QtdzCLokDbc=
-    
-    # use echo \Defuse\Crypto\Key::createNewRandomKey()->saveToAsciiSafeString(); to generate secret for data encryption
-    app_encryption_secret: "3it3AuXZxXVYewOdLnePPdzwtgHCcBVub1d2cdV5cJ0="
+    secret: 8WB5PEO3Y4kUs9AJtIbNbpXljwbqEiuAcuAAu8rU8xs=
 
+    # use echo \Defuse\Crypto\Key::createNewRandomKey()->saveToAsciiSafeString(); to generate secret for data encryption
+    app_encryption_secret: "abF7teoZpM+XFet42L0gvd3P0xG4cseG2KKxxK1RXz8="
 
     #this is necessary for CLI commands to get the base url, eg. sitemap dump
     router.request_context.host: demo.pimcore.fun
@@ -50,25 +49,31 @@ services:
         # if you need to do this, you can override this setting on individual services
         public: false
 
+    Elasticsearch\Client:
+        factory:
+            - 'App\Factory\ElasticsearchClientFactory'
+            - "getClient"
+    Elastic\Elasticsearch\Client: '@Elasticsearch\Client'
 
+    App\Services\CategoryIndexer: ~
+    App\Command\CategoryIndexCommand:
+        tags: ["console.command"]
+    App\EventListener\CategoryIndexListener:
+        tags: ["kernel.event_subscriber"]
     # ---------------------------------------------------------
     # Register all controllers of App as services
     # ---------------------------------------------------------
     App\Controller\:
-        resource: '../src/Controller'
+        resource: "../src/Controller"
         public: true
-        tags: ['controller.service_arguments']
-
-
+        tags: ["controller.service_arguments"]
 
     # ---------------------------------------------------------
     # Register all commands of App as commands
     # ---------------------------------------------------------
     App\Command\:
-        resource: '../src/Command'
-        tags: ['console.command']
-
-
+        resource: "../src/Command"
+        tags: ["console.command"]
 
     # ---------------------------------------------------------
     # Forms
@@ -115,40 +120,38 @@ services:
     App\Model\Product\CalculatedValue\AccessoryPartName:
         public: true
 
-
     # ---------------------------------------------------------
     # Twig Extensions
     # ---------------------------------------------------------
     App\Twig\Extension\CategoryFilterExtension:
-        tags: ['twig.extension']
+        tags: ["twig.extension"]
 
     App\Twig\Extension\Country:
-        tags: ['twig.extension']
+        tags: ["twig.extension"]
 
     App\Twig\Extension\Currency:
-        tags: ['twig.extension']
+        tags: ["twig.extension"]
 
     App\Twig\Extension\GeneralFilterExtension:
-        tags: ['twig.extension']
+        tags: ["twig.extension"]
 
     App\Twig\Extension\NavigationExtension:
-        tags: ['twig.extension']
+        tags: ["twig.extension"]
 
     App\Twig\Extension\UniqidExtension:
-        tags: ['twig.extension']
+        tags: ["twig.extension"]
 
     App\Twig\Extension\LanguageSwitcherExtension:
-        tags: ['twig.extension']
+        tags: ["twig.extension"]
 
     App\Twig\Extension\ProductPageExtension:
-        tags: ['twig.extension']
+        tags: ["twig.extension"]
 
     App\Twig\Extension\NewsExtension:
-        tags: ['twig.extension']
+        tags: ["twig.extension"]
 
     App\Twig\Extension\PrintCatalogExtension:
-        tags: ['twig.extension']
-
+        tags: ["twig.extension"]
 
     # ---------------------------------------------------------
     # Link Generators for DataObjects
@@ -162,8 +165,6 @@ services:
     App\Website\LinkGenerator\NewsLinkGenerator:
         public: true
 
-
-
     # ---------------------------------------------------------
     # Overwrite Pimcore Default Services
     # ---------------------------------------------------------
@@ -172,9 +173,7 @@ services:
     Pimcore\Twig\Extension\Templating\PimcoreUrl:
         class: App\Website\Tool\PimcoreUrl
         arguments:
-            $generator: '@router'
-
-
+            $generator: "@router"
 
     # ---------------------------------------------------------
     # Event Listeners
@@ -183,21 +182,49 @@ services:
     # auto sets name based on key for bodystyle, manufacturer, category
     App\EventListener\NameSettingListener:
         tags:
-            - { name: kernel.event_listener, event: pimcore.dataobject.preAdd, method: onPreAdd }
+            - {
+                  name: kernel.event_listener,
+                  event: pimcore.dataobject.preAdd,
+                  method: onPreAdd,
+              }
 
     # adds additional static files to admin backend
     App\EventListener\PimcoreAdminListener:
         tags:
-            - { name: kernel.event_listener, event: pimcore.bundle_manager.paths.css, method: addCSSFiles }
-            - { name: kernel.event_listener, event: pimcore.bundle_manager.paths.js, method: addJSFiles }
-            - { name: kernel.event_listener, event: pimcore.admin.resolve.elementAdminStyle, method: onResolveElementAdminStyle }
+            - {
+                  name: kernel.event_listener,
+                  event: pimcore.bundle_manager.paths.css,
+                  method: addCSSFiles,
+              }
+            - {
+                  name: kernel.event_listener,
+                  event: pimcore.bundle_manager.paths.js,
+                  method: addJSFiles,
+              }
+            - {
+                  name: kernel.event_listener,
+                  event: pimcore.admin.resolve.elementAdminStyle,
+                  method: onResolveElementAdminStyle,
+              }
 
     # checkout listeners for ecommerce application
     App\EventListener\CheckoutEventListener:
         tags:
-            - { name: kernel.event_listener, event: pimcore.ecommerce.ordermanager.postUpdateOrder, method: onUpdateOrder }
-            - { name: kernel.event_listener, event: pimcore.ecommerce.commitorderprocessor.sendConfirmationMails, method: sendConfirmationMail }
-            - { name: kernel.event_listener, event: pimcore.ecommerce.commitorderprocessor.postCommitOrder, method: postCommitOrder }
+            - {
+                  name: kernel.event_listener,
+                  event: pimcore.ecommerce.ordermanager.postUpdateOrder,
+                  method: onUpdateOrder,
+              }
+            - {
+                  name: kernel.event_listener,
+                  event: pimcore.ecommerce.commitorderprocessor.sendConfirmationMails,
+                  method: sendConfirmationMail,
+              }
+            - {
+                  name: kernel.event_listener,
+                  event: pimcore.ecommerce.commitorderprocessor.postCommitOrder,
+                  method: postCommitOrder,
+              }
 
     # authentication login listener for updating e-commerce framework environment after login
     App\EventListener\AuthenticationLoginListener: ~
@@ -205,16 +232,18 @@ services:
     # authentication login listener for updating e-commerce framework environment after logout
     App\EventListener\AuthenticationLogoutListener:
         tags:
-            - { name: 'kernel.event_subscriber', dispatcher: 'security.event_dispatcher.pimcore_admin' }
+            - {
+                  name: "kernel.event_subscriber",
+                  dispatcher: "security.event_dispatcher.pimcore_admin",
+              }
 
     Pimcore\Bundle\AdminBundle\EventListener\UserPerspectiveListener:
         class: App\EventListener\UserSessionPerspectiveListener
         calls:
-            - [ setLogger, [ '@logger' ] ]
+            - [setLogger, ["@logger"]]
         tags:
             - { name: kernel.event_subscriber }
             - { name: monolog.logger, channel: admin }
-
 
     # ---------------------------------------------------------
     # Workflow
@@ -222,7 +251,7 @@ services:
     App\Workflow\SupportsStrategy: ~
 
     App\MyAreaBricks\Custom\Areabricks\:
-        resource: '../src/MyAreaBricks/Custom/Areabricks/*'
+        resource: "../src/MyAreaBricks/Custom/Areabricks/*"
 
     # ---------------------------------------------------------
     # Use PdoSessionHandler for session storage
@@ -230,5 +259,6 @@ services:
     Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler:
         lazy: true
         arguments:
-            - !service { class: PDO, factory: [ '@database_connection', 'getNativeConnection' ] }
+            - class: PDO
+              factory: ["@database_connection", "getNativeConnection"]
             - { lock_mode: 0 }
