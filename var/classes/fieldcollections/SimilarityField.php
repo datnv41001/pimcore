@@ -75,97 +75,78 @@ return \Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
               ),
               2 => 
               array (
-                'key' => 'seoname',
-                'value' => 'seoname',
+                'key' => 'manufacturer_name',
+                'value' => 'manufacturer_name',
               ),
               3 => 
               array (
-                'key' => 'description',
-                'value' => 'description',
+                'key' => 'manufacturer',
+                'value' => 'manufacturer',
               ),
               4 => 
               array (
-                'key' => 'ean',
-                'value' => 'ean',
+                'key' => 'bodyStyle',
+                'value' => 'bodyStyle',
               ),
               5 => 
               array (
-                'key' => 'artno',
-                'value' => 'artno',
+                'key' => 'carClass',
+                'value' => 'carClass',
               ),
               6 => 
-              array (
-                'key' => 'gender',
-                'value' => 'gender',
-              ),
-              7 => 
               array (
                 'key' => 'color',
                 'value' => 'color',
               ),
+              7 => 
+              array (
+                'key' => 'country',
+                'value' => 'country',
+              ),
               8 => 
               array (
-                'key' => 'size',
-                'value' => 'size',
+                'key' => 'milage',
+                'value' => 'milage',
               ),
               9 => 
               array (
-                'key' => 'price',
-                'value' => 'price',
+                'key' => 'length',
+                'value' => 'length',
               ),
               10 => 
               array (
-                'key' => 'foottype',
-                'value' => 'foottype',
+                'key' => 'width',
+                'value' => 'width',
               ),
               11 => 
               array (
-                'key' => 'gaittype',
-                'value' => 'gaittype',
+                'key' => 'wheelbase',
+                'value' => 'wheelbase',
               ),
               12 => 
               array (
-                'key' => 'fittings',
-                'value' => 'fittings',
+                'key' => 'weight',
+                'value' => 'weight',
               ),
               13 => 
               array (
-                'key' => 'zips',
-                'value' => 'zips',
+                'key' => 'power',
+                'value' => 'power',
               ),
               14 => 
               array (
-                'key' => 'approvals',
-                'value' => 'approvals',
-              ),
-              15 => 
-              array (
-                'key' => 'rating',
-                'value' => 'rating',
-              ),
-              16 => 
-              array (
-                'key' => 'features',
-                'value' => 'features',
-              ),
-              17 => 
-              array (
-                'key' => 'attributes',
-                'value' => 'attributes',
-              ),
-              18 => 
-              array (
-                'key' => 'technologies',
-                'value' => 'technologies',
+                'key' => 'segments',
+                'value' => 'segments',
               ),
             ),
              'defaultValue' => NULL,
-             'optionsProviderClass' => NULL,
-             'optionsProviderData' => NULL,
              'columnLength' => 190,
              'dynamicOptions' => false,
              'defaultValueGenerator' => '',
              'width' => 300,
+             'optionsProviderType' => NULL,
+             'optionsProviderClass' => NULL,
+             'optionsProviderData' => NULL,
              'specificPriceField' => false,
              'showAllFields' => true,
              'considerTenants' => true,
@@ -226,6 +207,9 @@ return \Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
   )),
    'fieldDefinitionsCache' => NULL,
    'blockedVarsForExport' => 
+  array (
+  ),
+   'activeDispatchingEvents' => 
   array (
   ),
 ));

@@ -69,6 +69,7 @@ return \Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
             ),
              'defaultValue' => NULL,
              'useCurrentDate' => false,
+             'respectTimezone' => true,
              'columnType' => 'bigint(20)',
              'defaultValueGenerator' => '',
           )),
@@ -93,6 +94,7 @@ return \Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
             ),
              'defaultValue' => NULL,
              'useCurrentDate' => false,
+             'respectTimezone' => true,
              'columnType' => 'bigint(20)',
              'defaultValueGenerator' => '',
           )),
@@ -184,12 +186,13 @@ return \Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
               ),
             ),
              'defaultValue' => '',
-             'optionsProviderClass' => NULL,
-             'optionsProviderData' => NULL,
              'columnLength' => 190,
              'dynamicOptions' => false,
              'defaultValueGenerator' => '',
              'width' => 500,
+             'optionsProviderType' => NULL,
+             'optionsProviderClass' => NULL,
+             'optionsProviderData' => NULL,
           )),
           4 => 
           \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
@@ -380,6 +383,9 @@ return \Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
   )),
    'fieldDefinitionsCache' => NULL,
    'blockedVarsForExport' => 
+  array (
+  ),
+   'activeDispatchingEvents' => 
   array (
   ),
 ));

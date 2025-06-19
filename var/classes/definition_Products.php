@@ -7,11 +7,20 @@
  * Fields Summary:
  * - Name [input]
  * - Sku [input]
- * - Image [image]
+ * - Color [multiselect]
+ * - Image [input]
  * - Category [manyToOneRelation]
+ * - URL [link]
+ * - Approved [checkbox]
+ * - Accessory [manyToManyObjectRelation]
+ * - Video [video]
+ * - Price [numeric]
+ * - StockQuantity [quantityValue]
  * - Platforms [multiselect]
  * - Description [wysiwyg]
- * - Price [numeric]
+ * - Status [select]
+ * - CreatedAt [datetime]
+ * - UpdatedAt [datetime]
  */
 
 return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
@@ -21,8 +30,8 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1750231548,
-   'userOwner' => 2,
+   'modificationDate' => 1750306157,
+   'userOwner' => NULL,
    'userModification' => 2,
    'parentClass' => '',
    'implementsInterfaces' => '',
@@ -84,13 +93,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
             ),
              'defaultValue' => NULL,
-             'columnLength' => 190,
+             'columnLength' => 255,
              'regex' => '',
              'regexFlags' => 
             array (
             ),
              'unique' => false,
-             'showCharCount' => false,
+             'showCharCount' => true,
              'width' => '',
              'defaultValueGenerator' => '',
           )),
@@ -125,7 +134,55 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'defaultValueGenerator' => '',
           )),
           2 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Multiselect::__set_state(array(
+             'name' => 'Color',
+             'title' => 'Color',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'options' => 
+            array (
+              0 => 
+              array (
+                'key' => 'blue',
+                'value' => 'blue',
+              ),
+              1 => 
+              array (
+                'key' => 'red',
+                'value' => 'red',
+              ),
+              2 => 
+              array (
+                'key' => 'black',
+                'value' => 'black',
+              ),
+            ),
+             'maxItems' => NULL,
+             'renderType' => 'list',
+             'dynamicOptions' => false,
+             'defaultValue' => NULL,
+             'height' => '',
+             'width' => '',
+             'defaultValueGenerator' => '',
+             'optionsProviderType' => NULL,
+             'optionsProviderClass' => '',
+             'optionsProviderData' => '',
+          )),
+          3 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
              'name' => 'Image',
              'title' => 'Image',
              'tooltip' => '',
@@ -143,11 +200,18 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'uploadPath' => '',
+             'defaultValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
+            array (
+            ),
+             'unique' => false,
+             'showCharCount' => false,
              'width' => '',
-             'height' => '',
+             'defaultValueGenerator' => '',
           )),
-          3 => 
+          4 => 
           \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
              'name' => 'Category',
              'title' => 'Category',
@@ -173,7 +237,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                 'classes' => 'Category',
               ),
             ),
-             'displayMode' => 'grid',
+             'displayMode' => NULL,
              'pathFormatterClass' => '',
              'assetInlineDownloadAllowed' => false,
              'assetUploadPath' => '',
@@ -189,10 +253,10 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             ),
              'width' => '',
           )),
-          4 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\Multiselect::__set_state(array(
-             'name' => 'Platforms',
-             'title' => 'Platforms',
+          5 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Link::__set_state(array(
+             'name' => 'URL',
+             'title' => 'URL',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -208,39 +272,78 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'options' => 
+             'allowedTypes' => NULL,
+             'allowedTargets' => NULL,
+             'disabledFields' => NULL,
+          )),
+          6 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Checkbox::__set_state(array(
+             'name' => 'Approved',
+             'title' => 'Approved',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'defaultValue' => NULL,
+             'defaultValueGenerator' => '',
+          )),
+          7 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyObjectRelation::__set_state(array(
+             'name' => 'Accessory',
+             'title' => 'Accessory',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => true,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'classes' => 
             array (
               0 => 
               array (
-                'key' => 'odoo',
-                'value' => 'odoo',
-              ),
-              1 => 
-              array (
-                'key' => 'elasticsearch',
-                'value' => 'elasticsearch',
-              ),
-              2 => 
-              array (
-                'key' => 'b2b',
-                'value' => 'b2b',
+                'classes' => 'AccessoryPart',
               ),
             ),
+             'displayMode' => NULL,
+             'pathFormatterClass' => '',
              'maxItems' => NULL,
-             'renderType' => 'tags',
-             'dynamicOptions' => false,
-             'defaultValue' => NULL,
-             'height' => '',
+             'visibleFields' => 
+            array (
+            ),
+             'allowToCreateNewObject' => false,
+             'allowToClearRelation' => true,
+             'optimizedAdminLoading' => false,
+             'enableTextSelection' => false,
+             'visibleFieldDefinitions' => 
+            array (
+            ),
              'width' => '',
-             'defaultValueGenerator' => '',
-             'optionsProviderType' => 'configure',
-             'optionsProviderClass' => '',
-             'optionsProviderData' => '',
+             'height' => '',
           )),
-          5 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\Wysiwyg::__set_state(array(
-             'name' => 'Description',
-             'title' => 'Description',
+          8 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Video::__set_state(array(
+             'name' => 'Video',
+             'title' => 'Video',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -256,13 +359,22 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'toolbarConfig' => '',
-             'excludeFromSearchIndex' => false,
-             'maxCharacters' => '',
+             'uploadPath' => '',
+             'allowedTypes' => 
+            array (
+              0 => 'youtube',
+            ),
+             'supportedTypes' => 
+            array (
+              0 => 'asset',
+              1 => 'youtube',
+              2 => 'vimeo',
+              3 => 'dailymotion',
+            ),
              'height' => '',
              'width' => '',
           )),
-          6 => 
+          9 => 
           \Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
              'name' => 'Price',
              'title' => 'Price',
@@ -292,6 +404,219 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'width' => '',
              'defaultValueGenerator' => '',
           )),
+          10 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'name' => 'StockQuantity',
+             'title' => 'Stock Quantity',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'unitWidth' => '',
+             'defaultUnit' => NULL,
+             'validUnits' => 
+            array (
+              0 => '1',
+              1 => '2',
+              2 => '3',
+              3 => '4',
+              4 => '5',
+              5 => '6',
+              6 => '7',
+              7 => '8',
+            ),
+             'unique' => false,
+             'autoConvert' => false,
+             'defaultValueGenerator' => '',
+             'width' => '',
+             'defaultValue' => NULL,
+             'integer' => false,
+             'unsigned' => false,
+             'minValue' => NULL,
+             'maxValue' => NULL,
+             'decimalSize' => NULL,
+             'decimalPrecision' => NULL,
+          )),
+          11 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Multiselect::__set_state(array(
+             'name' => 'Platforms',
+             'title' => 'Platforms',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'options' => 
+            array (
+              0 => 
+              array (
+                'key' => 'odoo',
+                'value' => 'odoo',
+              ),
+              1 => 
+              array (
+                'key' => 'shopify',
+                'value' => 'shopify',
+              ),
+              2 => 
+              array (
+                'key' => 'elasticsearch',
+                'value' => 'elasticsearch',
+              ),
+              3 => 
+              array (
+                'key' => 'b2b',
+                'value' => 'b2b',
+              ),
+            ),
+             'maxItems' => NULL,
+             'renderType' => 'tags',
+             'dynamicOptions' => false,
+             'defaultValue' => NULL,
+             'height' => '',
+             'width' => '',
+             'defaultValueGenerator' => '',
+             'optionsProviderType' => NULL,
+             'optionsProviderClass' => '',
+             'optionsProviderData' => '',
+          )),
+          12 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Wysiwyg::__set_state(array(
+             'name' => 'Description',
+             'title' => 'Description',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'toolbarConfig' => '',
+             'excludeFromSearchIndex' => false,
+             'maxCharacters' => '',
+             'height' => '',
+             'width' => '',
+          )),
+          13 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+             'name' => 'Status',
+             'title' => 'Status',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'options' => 
+            array (
+              0 => 
+              array (
+                'key' => 'active ',
+                'value' => 'active ',
+              ),
+              1 => 
+              array (
+                'key' => 'inactive ',
+                'value' => 'inactive ',
+              ),
+            ),
+             'defaultValue' => '',
+             'columnLength' => 190,
+             'dynamicOptions' => false,
+             'defaultValueGenerator' => '',
+             'width' => '',
+             'optionsProviderType' => NULL,
+             'optionsProviderClass' => '',
+             'optionsProviderData' => '',
+          )),
+          14 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Datetime::__set_state(array(
+             'name' => 'CreatedAt',
+             'title' => 'Created At',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'defaultValue' => NULL,
+             'useCurrentDate' => false,
+             'respectTimezone' => true,
+             'columnType' => 'bigint(20)',
+             'defaultValueGenerator' => '',
+          )),
+          15 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Datetime::__set_state(array(
+             'name' => 'UpdatedAt',
+             'title' => 'Updated At',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'defaultValue' => NULL,
+             'useCurrentDate' => false,
+             'respectTimezone' => true,
+             'columnType' => 'bigint(20)',
+             'defaultValueGenerator' => '',
+          )),
         ),
          'locked' => false,
          'blockedVarsForExport' => 
@@ -301,7 +626,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'layout' => NULL,
          'border' => false,
          'icon' => '',
-         'labelWidth' => 100,
+         'labelWidth' => 0,
          'labelAlign' => 'left',
       )),
     ),
