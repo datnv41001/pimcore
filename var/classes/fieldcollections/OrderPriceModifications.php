@@ -191,4 +191,7 @@ return \Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
    'blockedVarsForExport' => 
   array (
   ),
+   'activeDispatchingEvents' => 
+  array (
+  ),
 ));

@@ -53,3 +53,6 @@ nbproject
 auth.json
 
 composer.lock
+public/var/tmp/
+public/var/thumbnails/
+public/var/assets/_default_upload_bucket/

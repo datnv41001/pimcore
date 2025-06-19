@@ -213,12 +213,13 @@ return \Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
                   ),
                 ),
                  'defaultValue' => '',
-                 'optionsProviderClass' => NULL,
-                 'optionsProviderData' => NULL,
                  'columnLength' => 190,
                  'dynamicOptions' => false,
                  'defaultValueGenerator' => '',
                  'width' => 400,
+                 'optionsProviderType' => NULL,
+                 'optionsProviderClass' => NULL,
+                 'optionsProviderData' => NULL,
               )),
             ),
              'locked' => false,
@@ -382,6 +383,9 @@ return \Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
   )),
    'fieldDefinitionsCache' => NULL,
    'blockedVarsForExport' => 
+  array (
+  ),
+   'activeDispatchingEvents' => 
   array (
   ),
 ));
